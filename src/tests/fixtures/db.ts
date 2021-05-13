@@ -6,7 +6,7 @@ import request from 'supertest'
 declare global {
     namespace NodeJS {
         interface Global {
-            login(): Promise<string> 
+            login(): Promise<string>
         }
     }
 }
@@ -31,6 +31,11 @@ export const userTwo = {
     is_deleted: false
 }
 
+export const group = {
+    name: 'READ Group',
+    permission: ['READ']
+}
+
 export const setupDatabase = async () => {
     await User.sync({ force: true })
     await Group.sync({ force: true })
@@ -52,6 +57,5 @@ export const setupDatabase = async () => {
         return response.body.accessToken
         
     }
-
 
 }
